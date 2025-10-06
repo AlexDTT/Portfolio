@@ -22,7 +22,7 @@ const Contact = () => {
               className="bg-primary hover:bg-primary/90 shadow-primary transition-all hover:scale-105"
               asChild
             >
-              <a href="mailto:alexandre@example.com">
+              <a href="mailto:alex.dinis.06@gmail.com">
                 <Mail className="w-5 h-5 mr-2" />
                 Say Hello
               </a>
