@@ -86,9 +86,8 @@ The built files will be in the `dist` directory, ready for deployment to service
 
 ## Contact
 
-- **Email**: [your-email@example.com]
-- **LinkedIn**: [Your LinkedIn Profile]
-- **GitHub**: [Your GitHub Profile]
+- **LinkedIn**: https://www.linkedin.com/in/alexandre-teixeira-186093278/
+- **GitHub**: https://github.com/AlexDTT
 
 ## License
 
