@@ -19,6 +19,13 @@ const Projects = () => {
       github: "#",
       demo: "https://cheetah.qa.fullscreen.pt/",
     },
+    {
+      title: "Arte em Ponto",
+      description: "E-commerce platform showcasing handcrafted crochet items with custom order functionality, pattern galleries, and artisan marketplace features.",
+      tags: ["Next.js", "Vue.js", "Vite", "Tailwind CSS", "HTML/CSS"],
+      github: "#",
+      demo: "https://arteemponto.vercel.app/",
+    },
   ];
 
   return (
