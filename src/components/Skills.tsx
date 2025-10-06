@@ -29,7 +29,7 @@ const Skills = () => {
           </h2>
           <div className="h-1 w-20 bg-gradient-primary rounded-full mx-auto" />
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            My technical arsenal — tuned to perfection
+            My technical arsenal - tuned to perfection
           </p>
         </div>
 
