@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 35 40% 96%;
+    --foreground: 25 30% 15%;
+
+    --card: 35 30% 98%;
+    --card-foreground: 25 30% 15%;
+
+    --popover: 35 30% 98%;
+    --popover-foreground: 25 30% 15%;
+
+    --primary: 30 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 35 25% 88%;
+    --secondary-foreground: 25 30% 15%;
+
+    --muted: 35 25% 88%;
+    --muted-foreground: 25 15% 45%;
+
+    --accent: 15 75% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 35 20% 85%;
+    --input: 35 20% 85%;
+    --ring: 30 85% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradient variables - Vintage guitar wood tones */
+    --gradient-primary: linear-gradient(135deg, hsl(30 85% 55%) 0%, hsl(15 75% 50%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(35 30% 98%) 0%, hsl(35 25% 92%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(30 85% 55% / 0.15) 0%, transparent 50%);
+    --gradient-wood: linear-gradient(135deg, hsl(30 50% 40%) 0%, hsl(25 45% 25%) 100%);
+    
+    /* Shadow variables */
+    --shadow-primary: 0 10px 40px -10px hsl(30 85% 55% / 0.3);
+    --shadow-card: 0 4px 20px hsl(25 30% 15% / 0.08);
+    --shadow-warm: 0 8px 32px hsl(30 85% 55% / 0.2);
+    
+    /* Animation variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 25 25% 8%;
+    --foreground: 35 20% 95%;
+
+    --card: 25 20% 12%;
+    --card-foreground: 35 20% 95%;
+
+    --popover: 25 20% 12%;
+    --popover-foreground: 35 20% 95%;
+
+    --primary: 30 85% 55%;
+    --primary-foreground: 25 25% 8%;
+
+    --secondary: 25 15% 18%;
+    --secondary-foreground: 35 20% 95%;
+
+    --muted: 25 15% 18%;
+    --muted-foreground: 35 15% 65%;
+
+    --accent: 15 75% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 35 20% 95%;
+
+    --border: 25 15% 22%;
+    --input: 25 15% 22%;
+    --ring: 30 85% 55%;
+
+    /* Custom gradient variables - Dark wood/stage lighting vibes */
+    --gradient-primary: linear-gradient(135deg, hsl(30 85% 55%) 0%, hsl(15 75% 50%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(25 20% 15%) 0%, hsl(25 15% 10%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(30 85% 55% / 0.2) 0%, transparent 50%);
+    --gradient-wood: linear-gradient(135deg, hsl(30 50% 40%) 0%, hsl(25 45% 25%) 100%);
+    
+    /* Shadow variables */
+    --shadow-primary: 0 10px 40px -10px hsl(30 85% 55% / 0.4);
+    --shadow-card: 0 4px 20px hsl(25 25% 8% / 0.6);
+    --shadow-warm: 0 8px 32px hsl(30 85% 55% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
