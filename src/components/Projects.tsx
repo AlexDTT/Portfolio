@@ -69,7 +69,7 @@ const Projects = () => {
                   ))}
                 </div>
                 <div className="flex gap-3">
-                  <Button
+                  {/* <Button
                     variant="outline"
                     size="sm"
                     className="gap-2 border-primary/30 hover:bg-primary/10"
@@ -79,7 +79,7 @@ const Projects = () => {
                       <Github className="w-4 h-4" />
                       Code
                     </a>
-                  </Button>
+                  </Button> */}
                   <Button
                     size="sm"
                     className="gap-2 bg-primary hover:bg-primary/90"
