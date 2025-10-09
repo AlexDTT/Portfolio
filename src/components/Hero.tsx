@@ -47,7 +47,7 @@ const Hero = () => {
               onClick={() => scrollToSection("projects")}
             >
               View My Work
-            </Button>
+            </Button> 
             <Button 
               size="lg"
               variant="outline"
