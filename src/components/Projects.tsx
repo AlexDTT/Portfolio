@@ -7,7 +7,7 @@ const Projects = () => {
   const projects = [
     {
       title: "NovaSupplier - Dev",
-      description: "Full-stack marketplace platform connecting Brands and Suppliers with integrated payments, order management, and real-time communication built on Next.js/NestJS with Stripe Connect and Azure infrastructure.",
+      description: "NovaSupplier is a B2B sourcing platform that connects global brands with verified European suppliers. It replaces outdated methods like trade fairs, cold outreach, and manual coordination by offering a streamlined digital solution for discovering suppliers, managing quotes, orders, invoices, shipping and communication — all in one place. The platform is built to modernize European sourcing and position Europe as the trusted, centralized hub for high-quality manufacturing.",
       tags: ["Next.js", "Nest.js", "Tailwind CSS", "Prisma", "PostgreSQL", "API Rest"],
       github: "#",
       demo: "https://novasupplier.com/",
