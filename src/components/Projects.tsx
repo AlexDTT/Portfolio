@@ -24,7 +24,7 @@ const Projects = () => {
       description: "E-commerce platform showcasing handcrafted crochet items with custom order functionality, pattern galleries, and artisan marketplace features.",
       tags: ["Next.js", "Vue.js", "Vite", "Tailwind CSS", "HTML/CSS"],
       github: "#",
-      demo: "https://arteemponto.vercel.app/",
+      demo: "https://arteemponto.pages.dev/",
     },
   ];
 
