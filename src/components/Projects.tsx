@@ -26,7 +26,7 @@ const Projects = () => {
       demo: "https://arteemponto.pages.dev/",
       video: "",
     },
-    {
+    { 
       title: "Cheetah",
       description: "SaaS platform enabling enterprises to streamline client scheduling with intelligent calendar management and real-time synchronization.",
       tags: ["Symfony", "PHP", "MySQL", "JavaScript", "HTML/CSS", "Twig"],
