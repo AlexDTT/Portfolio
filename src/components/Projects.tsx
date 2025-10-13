@@ -43,7 +43,7 @@ const Projects = () => {
       github: "#",
       date: "2021",
       demo: "",
-      video: "boavistakickboxing.mp4",
+      video: "",
     },
   ];
   const [open, setOpen] = React.useState(false);
