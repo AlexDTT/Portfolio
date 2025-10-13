@@ -124,7 +124,7 @@ const Projects = () => {
                       >
                         <CardContent className="p-0">
                           <video
-                            src={`public/assets/${project.video}`}
+                            src={`/assets/${project.video}`}
                             muted
                             playsInline
                             preload="metadata"
@@ -148,7 +148,7 @@ const Projects = () => {
                                 className="flex justify-center items-center"
                               >
                                 <video
-                                  src={`public/assets/${project.video}`}
+                                  src={`/assets/${project.video}`}
                                   controls
                                   autoPlay
                                   className="w-full h-auto rounded-2xl shadow-lg"
