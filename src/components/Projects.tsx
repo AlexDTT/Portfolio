@@ -3,8 +3,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 const Projects = () => {
   const projects = [
@@ -133,6 +134,9 @@ const Projects = () => {
                       </Card>
                     
                       <Dialog open={open} onOpenChange={setOpen}>
+                        <DialogTitle>
+                          <VisuallyHidden>Hidden Dialog Title</VisuallyHidden>
+                        </DialogTitle>
                         <DialogContent className="p-0 bg-transparent border-none max-w-4xl">
                           <AnimatePresence>
                             {open && (
