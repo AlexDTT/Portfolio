@@ -1,18 +1,32 @@
 import React, { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const Projects = () => {
   const projects = [
     {
       title: "NovaSupplier",
-      description: "NovaSupplier is a B2B sourcing platform that connects global brands with verified European suppliers. It replaces outdated methods like trade fairs, cold outreach, and manual coordination by offering a streamlined digital solution for discovering suppliers, managing quotes, orders, invoices, shipping and communication — all in one place. The platform is built to modernize European sourcing and position Europe as the trusted, centralized hub for high-quality manufacturing.",
-      tags: ["Next.js", "Nest.js", "Tailwind CSS", "Prisma", "PostgreSQL", "API Rest"],
+      description:
+        "NovaSupplier is a B2B sourcing platform that connects global brands with verified European suppliers. It replaces outdated methods like trade fairs, cold outreach, and manual coordination by offering a streamlined digital solution for discovering suppliers, managing quotes, orders, invoices, shipping and communication — all in one place. The platform is built to modernize European sourcing and position Europe as the trusted, centralized hub for high-quality manufacturing.",
+      tags: [
+        "Next.js",
+        "Nest.js",
+        "Tailwind CSS",
+        "Prisma",
+        "PostgreSQL",
+        "API Rest",
+      ],
       github: "#",
       date: "2025-present",
       demo: "https://novasupplier.com/",
@@ -20,25 +34,28 @@ const Projects = () => {
     },
     {
       title: "Arte em Ponto",
-      description: "E-commerce platform showcasing handcrafted crochet items with custom order functionality, pattern galleries, and artisan marketplace features.",
-      tags: ["Next.js", "Vue.js", "Vite", "Tailwind CSS", "HTML/CSS"],
+      description:
+        "E-commerce platform showcasing handcrafted crochet items with custom order functionality, pattern galleries, and artisan marketplace features - for now only frontend is available.",
+      tags: ["React", "Vite", "Tailwind CSS", "HTML/CSS"],
       github: "#",
       date: "2025",
       demo: "https://arteemponto.pages.dev/",
       video: "",
     },
-    { 
+    {
       title: "Cheetah",
-      description: "SaaS platform enabling enterprises to streamline client scheduling with intelligent calendar management and real-time synchronization.",
+      description:
+        "SaaS platform enabling enterprises to streamline client scheduling with intelligent calendar management and real-time synchronization.",
       tags: ["Symfony", "PHP", "MySQL", "JavaScript", "HTML/CSS", "Twig"],
       github: "#",
       date: "2022-2023",
       demo: "https://cheetah.qa.fullscreen.pt/",
       video: "",
-    }, 
+    },
     {
       title: "Boavista Kickboxing",
-      description: "Platform for managing a kickboxing gym, including member registration, class scheduling, attendance tracking, weight management, performance analysis, store for merchandise and more.",
+      description:
+        "Platform for managing a kickboxing gym, including member registration, class scheduling, attendance tracking, weight management, performance analysis, store for merchandise and more.",
       tags: ["JavaScript", "HTML/CSS", "PHP", "MySQL"],
       github: "#",
       date: "2021",
@@ -47,7 +64,6 @@ const Projects = () => {
     },
   ];
   const [open, setOpen] = React.useState(false);
-
 
   return (
     <section id="projects" className="py-20 px-4">
@@ -110,7 +126,11 @@ const Projects = () => {
                       className="gap-2 bg-primary hover:bg-primary/90"
                       asChild
                     >
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <ExternalLink className="w-4 h-4" />
                         Demo
                       </a>
@@ -132,7 +152,7 @@ const Projects = () => {
                           />
                         </CardContent>
                       </Card>
-                    
+
                       <Dialog open={open} onOpenChange={setOpen}>
                         <DialogTitle>
                           <VisuallyHidden>Hidden Dialog Title</VisuallyHidden>
@@ -144,7 +164,10 @@ const Projects = () => {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.3, ease: "easeInOut" }}
+                                transition={{
+                                  duration: 0.3,
+                                  ease: "easeInOut",
+                                }}
                                 className="flex justify-center items-center"
                               >
                                 <video
