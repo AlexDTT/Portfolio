@@ -56,6 +56,7 @@ const Projects = () => {
       title: "Boavista Kickboxing",
       description:
         "Platform for managing a kickboxing gym, including member registration, class scheduling, attendance tracking, weight management, performance analysis, store for merchandise and more.",
+      note: "If you want to know more about this project, please contact me!",
       tags: ["JavaScript", "HTML/CSS", "PHP", "MySQL"],
       github: "#",
       date: "2021",
@@ -93,7 +94,13 @@ const Projects = () => {
                 <p className="text-sm text-gray-400">{project.date}</p>
 
                 <CardDescription className="text-muted-foreground mt-2">
-                  {project.description}
+                  <div>{project.description}</div>
+                  {project.note && (
+                    <>
+                      <br />
+                      <span className="font-bold mt-2">{project.note}</span>
+                    </>
+                  )}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
