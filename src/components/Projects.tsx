@@ -98,7 +98,7 @@ const Projects = () => {
                   {project.note && (
                     <>
                       <br />
-                      <span className="font-bold mt-2">{project.note}</span>
+                      <span className="font-bold mt-2 ">{project.note}</span>
                     </>
                   )}
                 </CardDescription>
