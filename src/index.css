@@ -118,7 +118,7 @@ ul {
 
 .container {
   max-width: var(--measure);
-  margin: 0 auto;
+  margin-inline: auto;
   padding-bottom: 16px var(--gutter);
 }
 

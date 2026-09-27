@@ -39,7 +39,7 @@ src/
     ProjectRow.jsx              Click-to-expand project case study, used on /projects.
   pages/
     Home.jsx                    Greeting, What/Where/Why, pull quote, Now, 2 featured projects.
-    Projects.jsx                  Full project list.
+    Projects.jsx                  Full project list + university projects (CV-style entries).
     CV.jsx                        Experience, Projects, University Projects, Education (rgo.pt-style list), with screenshot galleries + YouTube walkthroughs.
 ```
 
@@ -52,7 +52,7 @@ Everything text-based lives in `src/data.js`:
 - `currently` - the "Now" bullet list
 - `projects` - the full project list on /projects (also shown on /cv)
 - `experience` - CV work history (role, org, type, period, location)
-- `universityProjects` - FEUP coursework entries on /cv, with optional `repo` link, plus `galleries` (screenshots, served from `public/media/cv/`) and `video` (YouTube walkthrough id)
+- `universityProjects` - FEUP coursework entries on /cv and /projects, with optional `repo` link, plus `galleries` (screenshots, served from `public/media/cv/`) and `video` (YouTube walkthrough id)
 - `education` - school history on /cv
 
 Any entry in `projects`, `experience`, `universityProjects`, or `education`

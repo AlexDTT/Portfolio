@@ -1,15 +1,12 @@
-import { useState } from 'react'
 import EntryLogo from './EntryLogo.jsx'
 import './ProjectRow.css'
 
-export default function ProjectRow({ project }) {
-  const [open, setOpen] = useState(false)
-
+export default function ProjectRow({ project, open, onToggle }) {
   return (
     <div className="project-row" data-open={open}>
       <button
         className="project-row__trigger"
-        onClick={() => setOpen((v) => !v)}
+        onClick={onToggle}
         aria-expanded={open}
       >
         <div className="project-row__head">

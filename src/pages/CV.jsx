@@ -212,7 +212,7 @@ function Gallery({ gallery }) {
   )
 }
 
-function Item({
+export function Item({
   title,
   highlight,
   period,
@@ -319,7 +319,7 @@ function Section({ title, count, children }) {
   )
 }
 
-function repoPath(repo) {
+export function repoPath(repo) {
   return repo ? repo.replace('https://github.com/', '') : null
 }
 
