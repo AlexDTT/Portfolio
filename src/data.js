@@ -1,6 +1,10 @@
 // All portfolio content lives here. Edit this file to update the site -
 // no need to touch component code for text changes.
 
+// Prefixes public/ asset paths with the Vite base so they work on GitHub
+// Pages (served under /Portfolio/) as well as locally.
+const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
 export const profile = {
   name: 'Alexandre Teixeira',
   role: 'Software Engineer',
@@ -141,7 +145,7 @@ export const universityProjects = [
   {
     id: 'compiler-register-allocation',
     title: 'Compiler Register Allocation',
-    logo: '/media/cv/compiler-register-allocation/registerallocationlogo.webp',
+    logo: asset('/media/cv/compiler-register-allocation/registerallocationlogo.webp'),
     team: '3-person team',
     course: 'Algorithm Design',
     period: 'May 2026 - May 2026',
@@ -161,11 +165,11 @@ export const universityProjects = [
         columns: 2,
         ratio: '4 / 3',
         images: [
-          { src: '/media/cv/compiler-register-allocation/basic.webp', alt: 'Basic colored interference graph with register reuse' },
-          { src: '/media/cv/compiler-register-allocation/spilling.webp', alt: 'Three-clique interference graph with one web spilled to memory' },
-          { src: '/media/cv/compiler-register-allocation/splitting.webp', alt: 'Interference graph before and after splitting a live range' },
-          { src: '/media/cv/compiler-register-allocation/noninterference-chain.webp', alt: 'Non-interference chain showing when registers can be reused' },
-          { src: '/media/cv/compiler-register-allocation/web-fusion.webp', alt: 'Interference graph showing transitive web fusion' },
+          { src: asset('/media/cv/compiler-register-allocation/basic.webp'), alt: 'Basic colored interference graph with register reuse' },
+          { src: asset('/media/cv/compiler-register-allocation/spilling.webp'), alt: 'Three-clique interference graph with one web spilled to memory' },
+          { src: asset('/media/cv/compiler-register-allocation/splitting.webp'), alt: 'Interference graph before and after splitting a live range' },
+          { src: asset('/media/cv/compiler-register-allocation/noninterference-chain.webp'), alt: 'Non-interference chain showing when registers can be reused' },
+          { src: asset('/media/cv/compiler-register-allocation/web-fusion.webp'), alt: 'Interference graph showing transitive web fusion' },
         ],
       },
     ],
@@ -173,7 +177,7 @@ export const universityProjects = [
   {
     id: 'arc-gym',
     title: 'ARC Gym',
-    logo: '/media/cv/arc-gym/arclogo.webp',
+    logo: asset('/media/cv/arc-gym/arclogo.webp'),
     team: '3-person team',
     course: 'Web Languages and Technologies',
     period: 'Mar 2026 - Jun 2026',
@@ -194,12 +198,12 @@ export const universityProjects = [
         columns: 2,
         ratio: '1400 / 861',
         images: [
-          { src: '/media/cv/arc-gym/landing.webp', alt: 'ARC Gym public landing page' },
-          { src: '/media/cv/arc-gym/login.webp', alt: 'ARC Gym login and registration page' },
-          { src: '/media/cv/arc-gym/dashboard.webp', alt: 'ARC Gym member dashboard and weekly class schedule' },
-          { src: '/media/cv/arc-gym/profile.webp', alt: 'ARC Gym member profile and account controls' },
-          { src: '/media/cv/arc-gym/public-trainer-page.webp', alt: 'ARC Gym public trainer profile' },
-          { src: '/media/cv/arc-gym/pass-page.webp', alt: 'ARC Gym digital QR membership pass' },
+          { src: asset('/media/cv/arc-gym/landing.webp'), alt: 'ARC Gym public landing page' },
+          { src: asset('/media/cv/arc-gym/login.webp'), alt: 'ARC Gym login and registration page' },
+          { src: asset('/media/cv/arc-gym/dashboard.webp'), alt: 'ARC Gym member dashboard and weekly class schedule' },
+          { src: asset('/media/cv/arc-gym/profile.webp'), alt: 'ARC Gym member profile and account controls' },
+          { src: asset('/media/cv/arc-gym/public-trainer-page.webp'), alt: 'ARC Gym public trainer profile' },
+          { src: asset('/media/cv/arc-gym/pass-page.webp'), alt: 'ARC Gym digital QR membership pass' },
         ],
       },
       {
@@ -207,11 +211,11 @@ export const universityProjects = [
         columns: 2,
         ratio: '1400 / 861',
         images: [
-          { src: '/media/cv/arc-gym/trainer-dashboard-1.webp', alt: 'ARC Gym trainer schedule dashboard' },
-          { src: '/media/cv/arc-gym/trainer-dashboard-2.webp', alt: 'ARC Gym trainer analytics dashboard' },
-          { src: '/media/cv/arc-gym/admin-dashboard.webp', alt: 'ARC Gym landing-page administration interface' },
-          { src: '/media/cv/arc-gym/admin-equipment.webp', alt: 'ARC Gym equipment administration interface' },
-          { src: '/media/cv/arc-gym/admin-plans.webp', alt: 'ARC Gym membership plan administration interface' },
+          { src: asset('/media/cv/arc-gym/trainer-dashboard-1.webp'), alt: 'ARC Gym trainer schedule dashboard' },
+          { src: asset('/media/cv/arc-gym/trainer-dashboard-2.webp'), alt: 'ARC Gym trainer analytics dashboard' },
+          { src: asset('/media/cv/arc-gym/admin-dashboard.webp'), alt: 'ARC Gym landing-page administration interface' },
+          { src: asset('/media/cv/arc-gym/admin-equipment.webp'), alt: 'ARC Gym equipment administration interface' },
+          { src: asset('/media/cv/arc-gym/admin-plans.webp'), alt: 'ARC Gym membership plan administration interface' },
         ],
       },
     ],
@@ -219,7 +223,7 @@ export const universityProjects = [
   {
     id: 'scientific-review-assignment',
     title: 'Scientific Review Assignment',
-    logo: '/media/cv/scientific-review-assignment/scientificreviewlogo.webp',
+    logo: asset('/media/cv/scientific-review-assignment/scientificreviewlogo.webp'),
     team: '3-person team',
     course: 'Algorithm Design',
     period: 'Mar 2026 - May 2026',
@@ -239,8 +243,8 @@ export const universityProjects = [
         columns: 2,
         ratio: '6 / 5',
         images: [
-          { src: '/media/cv/scientific-review-assignment/architecture.webp', alt: 'Architecture of the scientific review assignment maximum-flow pipeline' },
-          { src: '/media/cv/scientific-review-assignment/example-graph.webp', alt: 'Example maximum-flow assignment from submissions to reviewers' },
+          { src: asset('/media/cv/scientific-review-assignment/architecture.webp'), alt: 'Architecture of the scientific review assignment maximum-flow pipeline' },
+          { src: asset('/media/cv/scientific-review-assignment/example-graph.webp'), alt: 'Example maximum-flow assignment from submissions to reviewers' },
         ],
       },
     ],
@@ -248,7 +252,7 @@ export const universityProjects = [
   {
     id: 'clutch',
     title: 'Clutch',
-    logo: '/media/cv/clutch/clutchlogo.webp',
+    logo: asset('/media/cv/clutch/clutchlogo.webp'),
     team: '3-person team',
     course: 'Software Engineering',
     period: 'Feb 2026 - Jun 2026',
@@ -269,9 +273,9 @@ export const universityProjects = [
         columns: 3,
         ratio: '9 / 20',
         images: [
-          { src: '/media/cv/clutch/request-help.webp', alt: 'Clutch searching for a nearby peer for a selected FEUP course unit' },
-          { src: '/media/cv/clutch/session-chat.webp', alt: 'Clutch live help session with elapsed time, QR verification, and chat' },
-          { src: '/media/cv/clutch/leaderboard.webp', alt: 'Clutch weekly course and individual karma leaderboard' },
+          { src: asset('/media/cv/clutch/request-help.webp'), alt: 'Clutch searching for a nearby peer for a selected FEUP course unit' },
+          { src: asset('/media/cv/clutch/session-chat.webp'), alt: 'Clutch live help session with elapsed time, QR verification, and chat' },
+          { src: asset('/media/cv/clutch/leaderboard.webp'), alt: 'Clutch weekly course and individual karma leaderboard' },
         ],
       },
     ],
@@ -279,7 +283,7 @@ export const universityProjects = [
   {
     id: 'ninjix',
     title: 'Ninjix',
-    logo: '/media/cv/ninjix/ninjixlogo.webp',
+    logo: asset('/media/cv/ninjix/ninjixlogo.webp'),
     team: '4-person team',
     course: 'LCOM',
     period: 'Feb 2026 - Jun 2026',
@@ -299,7 +303,7 @@ export const universityProjects = [
   {
     id: 'tanktussle',
     title: 'TankTussle',
-    logo: '/media/cv/tanktussle/tanktusslelogo.webp',
+    logo: asset('/media/cv/tanktussle/tanktusslelogo.webp'),
     team: '3-person team',
     course: 'Software Design and Testing',
     period: 'Sep 2025 - Jan 2026',
@@ -320,10 +324,10 @@ export const universityProjects = [
         columns: 2,
         ratio: '17 / 9',
         images: [
-          { src: '/media/cv/tanktussle/splashscreen.webp', alt: 'TankTussle splash screen with ASCII tank logo' },
-          { src: '/media/cv/tanktussle/player-wins-round.webp', alt: 'TankTussle local multiplayer round with a player victory' },
-          { src: '/media/cv/tanktussle/ai-wins-round.webp', alt: 'TankTussle single-player match against AI with projectiles and particles' },
-          { src: '/media/cv/tanktussle/pause-menu.webp', alt: 'TankTussle pause menu' },
+          { src: asset('/media/cv/tanktussle/splashscreen.webp'), alt: 'TankTussle splash screen with ASCII tank logo' },
+          { src: asset('/media/cv/tanktussle/player-wins-round.webp'), alt: 'TankTussle local multiplayer round with a player victory' },
+          { src: asset('/media/cv/tanktussle/ai-wins-round.webp'), alt: 'TankTussle single-player match against AI with projectiles and particles' },
+          { src: asset('/media/cv/tanktussle/pause-menu.webp'), alt: 'TankTussle pause menu' },
         ],
       },
     ],
