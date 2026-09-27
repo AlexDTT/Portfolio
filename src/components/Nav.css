@@ -1,0 +1,45 @@
+.nav {
+  padding: 20px 0 0;
+}
+
+.nav__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 0 0;
+}
+
+.nav__pages {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.nav__link:hover {
+  color: var(--ink);
+}
+
+.nav__link--active {
+  color: var(--accent);
+}
+
+.nav__link--active::before {
+  color: var(--accent);
+}

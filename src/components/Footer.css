@@ -1,0 +1,28 @@
+.footer {
+  padding: 56px 0 48px;
+  margin-top: 64px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer__links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer__links a {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.footer__links a:hover {
+  color: var(--accent);
+}
+
+.footer__copy {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}

@@ -1,0 +1,17 @@
+.theme-toggle {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  height: 26px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 4px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--ink);
+  background: var(--accent-soft);
+}

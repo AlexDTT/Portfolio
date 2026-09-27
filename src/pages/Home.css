@@ -1,0 +1,122 @@
+.home-hero {
+  padding: 48px 0 8px;
+}
+
+.home-hero__title {
+  font-size: clamp(1.7rem, 5vw, 2.1rem);
+  line-height: 1.2;
+}
+
+.home-hero__intro {
+  margin-top: 18px;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 56ch;
+}
+
+.home-section {
+  padding: 36px 0;
+  border-top: 1px solid var(--line);
+}
+
+.home-section__body {
+  color: var(--ink-soft);
+  line-height: 1.65;
+  max-width: 60ch;
+}
+
+.home-quote {
+  padding: 44px 0;
+  border-top: 1px solid var(--line);
+}
+
+.home-quote__line {
+  font-size: clamp(1.3rem, 4vw, 1.6rem);
+  color: var(--ink);
+}
+
+.home-quote__body {
+  margin-top: 14px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  max-width: 58ch;
+}
+
+.home-currently {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.home-currently li {
+  color: var(--ink-soft);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.55;
+  max-width: 58ch;
+}
+
+.home-currently li::before {
+  content: '-';
+  position: absolute;
+  left: 0;
+  color: var(--ink-faint);
+}
+
+.home-featured {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-featured__link {
+  display: block;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.home-featured li:first-child .home-featured__link {
+  border-top: 1px solid var(--line);
+}
+
+.home-featured__title {
+  display: block;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.home-featured__link:hover .home-featured__title {
+  color: var(--accent);
+}
+
+.home-featured__summary {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  max-width: 56ch;
+}
+
+.home-more {
+  margin-top: 18px;
+}
+
+/* Two-column split: main content left, GitHub activity right.
+   Matches the .page--wide breakpoint in index.css. */
+.home-layout__aside .home-section {
+  padding-top: 48px;
+}
+
+@media (min-width: 1101px) {
+  .home-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 0 56px;
+    align-items: start;
+  }
+
+  .home-layout__aside {
+    position: sticky;
+    top: 24px;
+  }
+}
