@@ -12,7 +12,6 @@
   --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --measure: 640px;
-  --measure-wide: 1056px;
   --gutter: clamp(24px, 6vw, 64px);
 
   color-scheme: light;
@@ -52,6 +51,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* keeps in-page anchors clear of the sticky header */
+  scroll-padding-top: 120px;
 }
 
 body {
@@ -118,18 +119,7 @@ ul {
 .container {
   max-width: var(--measure);
   margin: 0 auto;
-  padding: 0 var(--gutter);
-}
-
-/* Two-column pages: widen header, main, and footer together so their
-   rules line up. Collapses below 1101px (see media query). */
-@media (min-width: 1101px) {
-  .page--wide .nav__top,
-  .page--wide .nav__row,
-  .page--wide .footer,
-  .page--wide main.container {
-    max-width: var(--measure-wide);
-  }
+  padding-bottom: 16px var(--gutter);
 }
 
 .sans {
@@ -174,9 +164,11 @@ ul {
 }
 
 .section-heading {
-  font-size: 0.95rem;
-  color: var(--ink-faint);
-  margin-bottom: 20px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
 }
 
 /* Reduced motion */

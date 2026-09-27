@@ -16,8 +16,7 @@
 }
 
 .home-section {
-  padding: 36px 0;
-  border-top: 1px solid var(--line);
+  padding: 52px 0 0;
 }
 
 .home-section__body {
@@ -27,8 +26,7 @@
 }
 
 .home-quote {
-  padding: 44px 0;
-  border-top: 1px solid var(--line);
+  padding: 56px 0 0;
 }
 
 .home-quote__line {
@@ -71,12 +69,14 @@
 
 .home-featured__link {
   display: block;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
+  padding: 18px 10px;
+  margin-inline: -10px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
 }
 
-.home-featured li:first-child .home-featured__link {
-  border-top: 1px solid var(--line);
+.home-featured__link:hover {
+  background: var(--accent-soft);
 }
 
 .home-featured__title {
@@ -99,24 +99,4 @@
 
 .home-more {
   margin-top: 18px;
-}
-
-/* Two-column split: main content left, GitHub activity right.
-   Matches the .page--wide breakpoint in index.css. */
-.home-layout__aside .home-section {
-  padding-top: 48px;
-}
-
-@media (min-width: 1101px) {
-  .home-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 360px;
-    gap: 0 56px;
-    align-items: start;
-  }
-
-  .home-layout__aside {
-    position: sticky;
-    top: 24px;
-  }
 }

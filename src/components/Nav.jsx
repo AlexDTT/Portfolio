@@ -7,6 +7,7 @@ import './Nav.css'
 const pages = [
   { to: '/', label: 'Home', end: true, key: 'h' },
   { to: '/projects', label: 'Projects', key: 'p' },
+  { to: '/cv', label: 'CV', key: 'c' },
 ]
 
 export default function Nav() {
@@ -18,7 +19,7 @@ export default function Nav() {
       </div>
 
       <div className="container nav__row">
-        <nav className="nav__pages">
+        <nav className="nav__pages" style={{'marginBottom': '0.5rem'}}>
           {pages.map((p) => (
             <NavLink
               key={p.to}

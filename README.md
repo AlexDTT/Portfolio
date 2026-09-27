@@ -2,8 +2,7 @@
 
 Personal homepage, React + Vite + React Router. Markdown/terminal-flavored
 minimalism - monospace throughout, `>` prompt-style links, a light/dark
-toggle, and a few functional details (live Porto clock, keyboard shortcuts,
-a live GitHub activity graph).
+toggle, and a few functional details (live Porto clock, keyboard shortcuts).
 
 ## Run it
 
@@ -20,60 +19,55 @@ npm run build
 
 Output goes to `dist/`, deployable anywhere static (Vercel, Netlify, GitHub
 Pages, Cloudflare Pages). If your host doesn't do SPA rewrites automatically,
-add a rewrite rule so `/projects` doesn't 404 on refresh.
+add a rewrite rule so `/projects` and `/cv` don't 404 on refresh.
 
 ## Structure
 
 ```
 src/
-  data.js                  All content: profile, qa, quote, currently, projects.
-  index.css                 Theme tokens (light + dark via [data-theme]), mono-first type, bracket-link + key-hint utilities.
-  App.jsx                    Router setup (/, /projects).
+  data.js                  All content: profile, qa, quote, currently, projects, experience, universityProjects, education.
+  index.css                 Theme tokens (light + dark via [data-theme]), mono-first type, prompt-link + key-hint utilities.
+  App.jsx                    Router setup (/, /projects, /cv).
   hooks/
-    useKeyboardShortcuts.js  Global "h/p" page shortcuts + "e/g/l" for email/GitHub/LinkedIn.
+    useKeyboardShortcuts.js  Global "h/p/c" page shortcuts + "e/g/l" for email/GitHub/LinkedIn.
   components/
     Layout.jsx                Nav + Footer wrapper, wires up keyboard shortcuts.
     Nav.jsx                    Clock, theme toggle, bracket-link page nav with key hints.
     Footer.jsx                 Bracket links (email/github/linkedin) + copyright.
     ThemeToggle.jsx            Light/dark toggle, persisted to localStorage.
     Clock.jsx                  Live local time, Europe/Lisbon.
-    GithubActivity.jsx         Live contributions heatmap (see below).
     ProjectRow.jsx              Click-to-expand project case study, used on /projects.
   pages/
-    Home.jsx                    Greeting, What/Where/Why, pull quote, Now, Activity, 2 featured projects.
+    Home.jsx                    Greeting, What/Where/Why, pull quote, Now, 2 featured projects.
     Projects.jsx                  Full project list.
+    CV.jsx                        Experience, Projects, University Projects, Education (rgo.pt-style list), with screenshot galleries + YouTube walkthroughs.
 ```
 
 ## Editing content
 
 Everything text-based lives in `src/data.js`:
-- `profile` - name, role, contact links, `githubUsername`
+- `profile` - name, role, contact links
 - `qa` - the What/Where/Why sections on the homepage
 - `quote` - the pull-quote line + elaboration
 - `currently` - the "Now" bullet list
-- `projects` - the full project list on /projects
+- `projects` - the full project list on /projects (also shown on /cv)
+- `experience` - CV work history (role, org, type, period, location)
+- `universityProjects` - FEUP coursework entries on /cv, with optional `repo` link, plus `galleries` (screenshots, served from `public/media/cv/`) and `video` (YouTube walkthrough id)
+- `education` - school history on /cv
+
+Any entry in `projects`, `experience`, `universityProjects`, or `education`
+may also carry an optional `logo` path to an image under `public/` (e.g.
+`/media/cv/clutch/clutchlogo.webp`). It renders as the small chip above the
+title on /, /projects, and /cv - no component edits needed.
 
 No component edits needed for text changes.
 
 ## Keyboard shortcuts
 
-`h` → Home · `p` → Projects · `e` → email · `g` → GitHub ·
+`h` → Home · `p` → Projects · `c` → CV · `e` → email · `g` → GitHub ·
 `l` → LinkedIn. Disabled while a modifier key (Cmd/Ctrl/Alt) is held or a
 form field is focused. Defined in `useKeyboardShortcuts.js` - add more by
 extending `ROUTE_KEYS` or `LINK_KEYS`.
-
-## GitHub activity graph
-
-`GithubActivity.jsx` fetches real contribution history client-side, no
-token needed:
-
-```
-https://github-contributions-api.jogruber.de/v4/{username}?y=last
-```
-
-`profile.githubUsername` controls the account (currently `AlexDTT`). This is
-a community-run, cached API; if it's ever down the component falls back to
-a plain "see my activity on GitHub" link instead of breaking the page.
 
 ## Theme
 

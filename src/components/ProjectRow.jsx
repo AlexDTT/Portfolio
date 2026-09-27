@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import EntryLogo from './EntryLogo.jsx'
 import './ProjectRow.css'
 
 export default function ProjectRow({ project }) {
@@ -12,14 +13,17 @@ export default function ProjectRow({ project }) {
         aria-expanded={open}
       >
         <div className="project-row__head">
-          <h3 className="project-row__title">{project.title}</h3>
+          <div className="project-row__lead">
+            <EntryLogo src={project.logo} alt={`${project.title} logo`} />
+            <h3 className="project-row__title">{project.title}</h3>
+          </div>
           <span className="project-row__period mono">{project.period}</span>
         </div>
         <p className="project-row__summary">{project.summary}</p>
       </button>
 
-      {open && (
-        <div className="project-row__detail">
+      <div className="project-row__detail" data-open={open}>
+        <div className="project-row__detail__inner">
           <p>{project.detail}</p>
           <ul className="project-row__stack">
             {project.stack.map((s) => (
@@ -39,7 +43,7 @@ export default function ProjectRow({ project }) {
             </a>
           )}
         </div>
-      )}
+      </div>
     </div>
   )
 }

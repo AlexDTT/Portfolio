@@ -5,6 +5,7 @@ import { profile } from '../data.js'
 const ROUTE_KEYS = {
   h: '/',
   p: '/projects',
+  c: '/cv',
 }
 
 const LINK_KEYS = {

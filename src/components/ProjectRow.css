@@ -1,19 +1,16 @@
-.project-row {
-  border-bottom: 1px solid var(--line);
-}
-
-.project-list .project-row:first-child {
-  border-top: 1px solid var(--line);
-}
-
-.project-list .project-row:last-child {
-  border-bottom: none;
-}
-
 .project-row__trigger {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  padding: 22px 0;
+  padding: 24px 10px;
+  margin-inline: -10px;
+  border-radius: 6px;
   display: block;
+  transition: background-color 0.15s ease;
+}
+
+.project-row__trigger:hover {
+  background: var(--accent-soft);
 }
 
 .project-row__head {
@@ -21,6 +18,10 @@
   justify-content: space-between;
   align-items: baseline;
   gap: 16px;
+}
+
+.project-row__lead {
+  min-width: 0;
 }
 
 .project-row__title {
@@ -48,8 +49,30 @@
 }
 
 .project-row__detail {
-  padding: 0 0 28px;
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  /* clip room for focus outlines without changing the layout box */
+  padding: 0 5px 5px;
+  margin: 0 -5px -5px;
+  transition: grid-template-rows 0.34s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-row__detail[data-open='true'] {
+  grid-template-rows: 1fr;
+}
+
+.project-row__detail__inner {
+  min-height: 0;
+  padding-bottom: 28px;
   max-width: 56ch;
+  visibility: hidden;
+  transition: visibility 0s linear 0.34s;
+}
+
+.project-row__detail[data-open='true'] .project-row__detail__inner {
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 .project-row__detail p {

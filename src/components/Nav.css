@@ -1,13 +1,18 @@
 .nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
   padding: 20px 0 0;
+  background: var(--bg);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .nav__top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
+  align-items: baseline;
 }
 
 .nav__row {
@@ -16,7 +21,8 @@
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
-  padding: 16px 0 0;
+  padding: 24px 0 14px;
+  border-bottom: 1px solid var(--line);
 }
 
 .nav__pages {
