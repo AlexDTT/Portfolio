@@ -62,6 +62,9 @@ body {
   font-family: var(--mono);
   font-size: 16px;
   line-height: 1.6;
+  /* keeps long unbreakable tokens (repo paths, urls) from forcing
+     horizontal scroll on narrow viewports */
+  overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -117,9 +120,9 @@ ul {
 }
 
 .container {
-  max-width: var(--measure);
-  margin-inline: auto;
-  padding-bottom: 16px var(--gutter);
+  /* --measure-wide column: centered on wide screens, inset by the gutter on
+     narrow ones, so content never sits flush against (or overflows) the edge */
+  margin-inline: max(var(--gutter), calc((100% - var(--measure)) / 2));
 }
 
 .sans {
