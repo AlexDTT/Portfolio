@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import EntryLogo from '../components/EntryLogo.jsx'
-import { profile, projects, experience, universityProjects, education } from '../data.js'
+import cvUrl from '../generated/cv/alexandre-teixeira-cv.pdf?url'
+import extendedCvUrl from '../generated/cv/alexandre-teixeira-extended-cv.pdf?url'
+import { profile, projects, experience, universityProjects, education, skills } from '../data.js'
 import './CV.css'
 
 function VideoPlayer({ id, title }) {
@@ -325,6 +327,38 @@ export function repoPath(repo) {
 
 export default function CV() {
   const [openId, setOpenId] = useState(null)
+  const [downloading, setDownloading] = useState(null)
+  const [downloadError, setDownloadError] = useState('')
+
+  async function downloadPdf(event, url, filename) {
+    event.preventDefault()
+    if (downloading) return
+    setDownloading(filename)
+    setDownloadError('')
+    const controller = new AbortController()
+    const timeout = window.setTimeout(() => controller.abort(), 15000)
+    try {
+      const response = await fetch(url, { signal: controller.signal, cache: 'no-store' })
+      if (!response.ok) throw new Error('Download failed')
+      const bytes = await response.arrayBuffer()
+      const header = new TextDecoder().decode(new Uint8Array(bytes, 0, Math.min(5, bytes.byteLength)))
+      if (header !== '%PDF-') throw new Error('The response is not a PDF')
+      const blobUrl = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }))
+      const link = document.createElement('a')
+      link.href = blobUrl
+      link.download = filename
+      document.body.appendChild(link)
+      link.click()
+      link.remove()
+      // Keep the blob alive long enough for the browser to finish starting the download.
+      window.setTimeout(() => URL.revokeObjectURL(blobUrl), 60000)
+    } catch {
+      setDownloadError('The PDF could not be downloaded. Please refresh the page and try again.')
+    } finally {
+      window.clearTimeout(timeout)
+      setDownloading(null)
+    }
+  }
 
   const openProps = (id) => ({
     open: openId === id,
@@ -350,6 +384,28 @@ export default function CV() {
             linkedin
           </a>
         </p>
+        <div className="cv-page__downloads">
+          <a
+            className="bracket"
+            href={cvUrl}
+            download="Alexandre-Teixeira-CV.pdf"
+            onClick={(event) => downloadPdf(event, cvUrl, 'Alexandre-Teixeira-CV.pdf')}
+            aria-disabled={Boolean(downloading)}
+          >
+            Download CV <span className="cv-page__download-format">PDF</span>
+          </a>
+          <a
+            className="bracket"
+            href={extendedCvUrl}
+            download="Alexandre-Teixeira-Extended-CV.pdf"
+            onClick={(event) => downloadPdf(event, extendedCvUrl, 'Alexandre-Teixeira-Extended-CV.pdf')}
+            aria-disabled={Boolean(downloading)}
+          >
+            Download Extended CV <span className="cv-page__download-format">PDF</span>
+          </a>
+        </div>
+        {downloading && <p className="cv-page__download-status" role="status">Downloading PDF…</p>}
+        {downloadError && <p className="cv-page__download-status" role="alert">{downloadError}</p>}
       </header>
 
       <Section title="Experience" count={experience.length}>
@@ -417,6 +473,16 @@ export default function CV() {
             meta={`${e.degree} · ${e.location}`}
           />
         ))}
+      </Section>
+      <Section title="Skills" count={skills.length}>
+        <dl className="cv-skills">
+          {skills.map((group) => (
+            <div key={group.label}>
+              <dt>{group.label}</dt>
+              <dd>{group.items.join(', ')}</dd>
+            </div>
+          ))}
+        </dl>
       </Section>
     </section>
   )

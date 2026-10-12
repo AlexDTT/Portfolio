@@ -4,8 +4,11 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "predev": "npm run build:cv",
     "dev": "vite",
+    "prebuild": "npm run build:cv",
     "build": "vite build",
+    "build:cv": "node scripts/build-cv.mjs",
     "preview": "vite preview",
     "deploy": "bash scripts/deploy.sh"
   },
