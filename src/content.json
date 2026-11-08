@@ -82,15 +82,8 @@
       "org": "SaaS Scheduling Platform",
       "summary": "SaaS platform for enterprise client scheduling with intelligent calendar management and real-time synchronization.",
       "detail": "Built during my internship at Fullscreen, alongside other work on the company's CMS and client projects. Handled the scheduling logic and calendar sync on top of a Symfony backend.",
-      "stack": [
-        "Symfony",
-        "PHP",
-        "MySQL",
-        "JavaScript",
-        "Twig",
-        "HTML/CSS"
-      ],
-      "link": "https://cheetah.qa.fullscreen.pt/",
+      "stack": ["Symfony", "PHP", "MySQL", "JavaScript", "Twig", "HTML/CSS"],
+      "link": null,
       "cv": {
         "includeInShort": true,
         "shortPoints": [
@@ -105,12 +98,7 @@
       "org": "Gym Management Platform",
       "summary": "Gym management system covering registration, class scheduling, attendance, weight tracking, analytics and a merchandise store.",
       "detail": "One of my first projects, made with some other colleagues in highschool. The project included member registration, class scheduling, attendance tracking, weight and performance monitoring, and a small storefront for merchandise, built end to end.",
-      "stack": [
-        "PHP",
-        "MySQL",
-        "JavaScript",
-        "HTML/CSS"
-      ],
+      "stack": ["PHP", "MySQL", "JavaScript", "HTML/CSS"],
       "link": null,
       "cv": {
         "includeInShort": true,
@@ -499,20 +487,11 @@
     },
     {
       "label": "Frontend",
-      "items": [
-        "React",
-        "Tailwind CSS",
-        "HTML/CSS"
-      ]
+      "items": ["React", "Tailwind CSS", "HTML/CSS"]
     },
     {
       "label": "Backend",
-      "items": [
-        "Node.js",
-        "Nest.js",
-        "Symfony",
-        "REST API"
-      ]
+      "items": ["Node.js", "Nest.js", "Symfony", "REST API"]
     },
     {
       "label": "Security & Data",
@@ -539,10 +518,7 @@
     },
     {
       "label": "Languages Spoken",
-      "items": [
-        "Portuguese (Native)",
-        "English (Advanced)"
-      ]
+      "items": ["Portuguese (Native)", "English (Advanced)"]
     }
   ]
 }
