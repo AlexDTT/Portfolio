@@ -1,4 +1,4 @@
-import{g as ji,j as V,u as qi,w as Hi,N as Ui,L as Vi,r as wn,a as $i}from"./index-mVaVop9x.js";const Wi=`# Natas 0-3: Warm-up
+import{g as ji,j as V,u as qi,w as Hi,N as Ui,L as Vi,r as wn,a as $i}from"./index-CB3WpKNa.js";const Wi=`# Natas 0-3: Warm-up
 
 These are introductory levels: the password for the next level is sitting in the page itself, either in the visible HTML or in an HTML comment, so the only tool needed is the browser's view-source. No exploitation required.
 
