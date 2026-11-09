@@ -17,7 +17,7 @@ function withAssets(entry) {
   }
 }
 
-export const { profile, currently, qa, quote, skills } = content
+export const { profile, currently, qa, quote, skills, writeups } = content
 export const projects = content.projects.map(withAssets)
 export const experience = content.experience.map(withAssets)
 export const universityProjects = content.universityProjects.map(withAssets)

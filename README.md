@@ -19,7 +19,7 @@ npm run build
 
 Output goes to `dist/`, deployable anywhere static (Vercel, Netlify, GitHub
 Pages, Cloudflare Pages). If your host doesn't do SPA rewrites automatically,
-add a rewrite rule so `/projects` and `/cv` don't 404 on refresh.
+add a rewrite rule so `/projects`, `/writeups`, and `/cv` don't 404 on refresh.
 
 ## Structure
 
@@ -28,9 +28,9 @@ src/
   content.json             Shared website/PDF content, skills, and concise CV selection.
   data.js                  Website exports and base-aware public asset paths.
   index.css                 Theme tokens (light + dark via [data-theme]), mono-first type, prompt-link + key-hint utilities.
-  App.jsx                    Router setup (/, /projects, /cv).
+  App.jsx                    Router setup (/, /projects, /writeups, /cv).
   hooks/
-    useKeyboardShortcuts.js  Global "h/p/c" page shortcuts + "e/g/l" for email/GitHub/LinkedIn.
+    useKeyboardShortcuts.js  Global "h/p/w/c" page shortcuts + "e/g/l" for email/GitHub/LinkedIn.
   components/
     Layout.jsx                Nav + Footer wrapper, wires up keyboard shortcuts.
     Nav.jsx                    Clock, theme toggle, bracket-link page nav with key hints.
@@ -38,9 +38,12 @@ src/
     ThemeToggle.jsx            Light/dark toggle, persisted to localStorage.
     Clock.jsx                  Live local time, Europe/Lisbon.
     ProjectRow.jsx              Click-to-expand project case study, used on /projects.
+  writeups/                 Full writeups as Markdown, one folder per series, plus their screenshots.
   pages/
     Home.jsx                    Greeting, What/Where/Why, pull quote, Now, 2 featured projects.
     Projects.jsx                  Full project list + university projects (CV-style entries).
+    Writeups.jsx                  List of CTF series at /writeups.
+    WriteupSeries.jsx             One series with every level rendered in full at /writeups/<series id>.
     CV.jsx                        Experience, Projects, University Projects, Education, Skills, galleries, walkthroughs, and PDF downloads.
 ```
 
@@ -55,6 +58,7 @@ Shared content lives in `src/content.json`:
 - `experience` - CV work history (role, org, type, period, location)
 - `universityProjects` - FEUP coursework entries on /cv and /projects, with optional `repo` link, plus `galleries` (screenshots, served from `public/media/cv/`) and `video` (YouTube walkthrough id)
 - `education` - school history on /cv
+- `writeups` - CTF series on /writeups, each with a `repo` and `levels` (file paths, in display order, inside both the repo and `src/writeups/<series id>/`). Also shown on /cv and in the PDFs, using `points` and `url`, the full address the PDFs link to
 - `skills` - skill groups shared by /cv and both PDFs
 
 Any entry in `projects`, `experience`, `universityProjects`, or `education`
@@ -63,6 +67,32 @@ may also carry an optional `logo` path to an image under `public/` (e.g.
 title on /, /projects, and /cv - no component edits needed.
 
 No component edits needed for text changes.
+
+## Writeups
+
+`/writeups` lists each CTF, and `/writeups/<series id>` shows all of its levels
+in full on one page, with a link to the CTF's GitHub repo. The text lives in
+`src/writeups/<series id>/levels/`. These are copies: editing one does not
+change the GitHub repo, or the other way round.
+
+**Never put passwords in a writeup**: no real values, no placeholders, and no
+"Password:" lines. Check screenshots too, as a password in an image can't be
+found by searching the text.
+
+To add a level, add its file to `levels` in `content.json`. To add a CTF, add an
+entry to `writeups` and put its Markdown in `src/writeups/<series id>/`. Each
+file's `# Title` becomes the level's heading.
+
+To add a screenshot, put the image in that series' `levels/images/` folder and
+reference it from the Markdown with a relative path:
+
+```markdown
+![Burp intercepting the request](images/natas04-burp.png)
+```
+
+PNG, JPG, WebP, GIF, and AVIF are picked up automatically. The alt text doubles
+as the caption, and clicking an image enlarges it. To make the image show on
+GitHub too, commit it to `levels/images/` in the repo with the same name.
 
 ## CV downloads
 
@@ -97,7 +127,7 @@ access and `tar` with xz support. Subsequent builds work offline. An installed
 `typst` on PATH is used instead when available; on other platforms install the
 Typst CLI yourself. Set `TYPST_BIN` to use a specific executable.
 
-Each experience, project, university project, and education entry can include:
+Each experience, project, university project, writeup series, and education entry can include:
 
 ```json
 "cv": {
@@ -121,7 +151,7 @@ extended version.
 
 ## Keyboard shortcuts
 
-`h` → Home · `p` → Projects · `c` → CV · `e` → email · `g` → GitHub ·
+`h` → Home · `p` → Projects · `w` → Writeups · `c` → CV · `e` → email · `g` → GitHub ·
 `l` → LinkedIn. Disabled while a modifier key (Cmd/Ctrl/Alt) is held or a
 form field is focused. Defined in `useKeyboardShortcuts.js` - add more by
 extending `ROUTE_KEYS` or `LINK_KEYS`.

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import EntryLogo from '../components/EntryLogo.jsx'
 import cvUrl from '../generated/cv/alexandre-teixeira-cv.pdf?url'
 import extendedCvUrl from '../generated/cv/alexandre-teixeira-extended-cv.pdf?url'
-import { profile, projects, experience, universityProjects, education, skills } from '../data.js'
+import { profile, projects, experience, universityProjects, writeups, education, skills } from '../data.js'
 import './CV.css'
 
 function VideoPlayer({ id, title }) {
@@ -46,7 +46,7 @@ function VideoPlayer({ id, title }) {
   )
 }
 
-function Lightbox({ images, index, onClose, onStep }) {
+export function Lightbox({ images, index, onClose, onStep }) {
   const dialogRef = useRef(null)
   const closeRef = useRef(null)
   const image = images[index]
@@ -458,6 +458,21 @@ export default function CV() {
                 : `${p.team} · ${p.course}`
             }
             {...openProps(p.id)}
+          />
+        ))}
+      </Section>
+
+      <Section title="CTFs" count={writeups.length}>
+        {writeups.map((series) => (
+          <Item
+            key={series.id}
+            title={series.title}
+            period={series.period}
+            points={series.points}
+            href={`${import.meta.env.BASE_URL}writeups/${series.id}`}
+            hrefLabel="read the writeups"
+            meta={series.category}
+            {...openProps(series.id)}
           />
         ))}
       </Section>

@@ -7,6 +7,7 @@ import './Nav.css'
 const pages = [
   { to: '/', label: 'Home', end: true, key: 'h' },
   { to: '/projects', label: 'Projects', key: 'p' },
+  { to: '/writeups', label: 'Writeups', key: 'w' },
   { to: '/cv', label: 'CV', key: 'c' },
 ]
 

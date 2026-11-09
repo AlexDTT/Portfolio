@@ -2,7 +2,9 @@
   font-size: 0.85rem;
   color: var(--ink-soft);
   height: 26px;
-  padding: 4px 0;
+  padding: 4px 8px;
+  /* keeps the label lined up with the column edge; only the hover background extends */
+  margin-right: -8px;
   display: flex;
   align-items: center;
   justify-content: flex-end;

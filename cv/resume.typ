@@ -99,5 +99,18 @@
   }
 ]
 
+#let ctfs = selected(data.writeups)
+#if ctfs.len() > 0 [
+  = CTFs
+  #for entry in ctfs {
+    block(breakable: false, exp(
+      title: if extended { link(entry.url, entry.title) } else { [#link(entry.url, entry.title) (#entry.category)] },
+      organization: if extended { entry.category } else { "" },
+      date: entry.period,
+      details: bullets(if extended { entry.points } else { short-points(entry, entry.points) }),
+    ))
+  }
+]
+
 = Skills
 #block(breakable: false, skills(data.skills.map(group => (group.label, group.items))))

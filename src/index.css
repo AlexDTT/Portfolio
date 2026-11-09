@@ -125,6 +125,18 @@ ul {
   margin-inline: max(var(--gutter), calc((100% - var(--measure)) / 2));
 }
 
+/* Keeps the footer at the bottom of the screen when the content is short */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.page > main {
+  flex: 1;
+}
+
 .sans {
   font-family: var(--sans);
 }

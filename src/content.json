@@ -471,6 +471,45 @@
       }
     }
   ],
+  "writeups": [
+    {
+      "id": "natas",
+      "title": "OverTheWire Natas",
+      "category": "Web security wargame",
+      "period": "Nov 2026 - Present",
+      "summary": "A level-by-level walkthrough of the Natas wargame: the vulnerability, the approach taken, and the payload that unlocks the next level. Passwords are never included, as OverTheWire asks.",
+      "repo": "https://github.com/AlexDTT/nataslevelsctfs",
+      "url": "https://alexdtt.github.io/Portfolio/writeups/natas",
+      "points": [
+        "Completed levels 0-17, covering SQL injection (including boolean and time-based blind), command injection, local file inclusion, file upload bypasses, and cookie tampering",
+        "Scripted blind extraction in Python and documented the work in public writeups"
+      ],
+      "cv": {
+        "includeInShort": true,
+        "shortPoints": [
+          "Levels 0-17: blind SQL injection scripted in Python, command injection, file inclusion, and upload bypasses."
+        ]
+      },
+      "levels": [
+        "levels/natas00-03.md",
+        "levels/natas04.md",
+        "levels/natas05.md",
+        "levels/natas06.md",
+        "levels/natas07.md",
+        "levels/natas08.md",
+        "levels/natas09.md",
+        "levels/natas10.md",
+        "levels/natas11.md",
+        "levels/natas12.md",
+        "levels/natas13.md",
+        "levels/natas14.md",
+        "levels/natas15.md",
+        "levels/natas16.md",
+        "levels/natas17.md",
+        "levels/natas18.md"
+      ]
+    }
+  ],
   "skills": [
     {
       "label": "Languages",

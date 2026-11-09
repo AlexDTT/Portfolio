@@ -62,7 +62,7 @@ async function compiler() {
 async function build() {
   // Catch invalid content before compiling or replacing either download.
   const content = JSON.parse(await readFile(path.join(root, 'src/content.json'), 'utf8'))
-  for (const section of ['experience', 'projects', 'universityProjects', 'education', 'skills']) {
+  for (const section of ['experience', 'projects', 'universityProjects', 'writeups', 'education', 'skills']) {
     if (!Array.isArray(content[section])) throw new Error(`content.${section} must be an array`)
   }
   const typst = await compiler()
