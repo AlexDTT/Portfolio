@@ -6,6 +6,7 @@
     "tagline": "I'm a developer leaning into cybersecurity. I build full-stack products, then try to find where they'd break.",
     "location": "Porto, Portugal",
     "email": "alex.dinis.06@gmail.com",
+    "website": "https://alexdtt.github.io/Portfolio",
     "github": "https://github.com/AlexDTT",
     "linkedin": "https://linkedin.com/in/alexandre-teixeira-186093278/",
     "intro": "I'm a Computer Engineering student at FEUP who spent three years building the backend of real products before turning toward security. That order matters to me - I want to know how systems are built before I try to find where they break.",
@@ -383,6 +384,8 @@
       "course": "LCOM",
       "period": "Feb 2026 - Jun 2026",
       "repo": null,
+      "link": "https://arcade.rgo.pt/#game=ninjix-e742f8bcdc75",
+      "linkLabel": "play it in the browser",
       "points": [
         "Co-built a pixel-art tower-defense game and small game engine in C for MINIX, driven by timer, keyboard, mouse, graphics, and serial-port interrupts",
         "Implemented a 60 Hz simulation/render loop with levels, waves, tower upgrades, enemy abilities, projectile pools, menus, profiling, and custom PNG-to-XPM tooling",

@@ -59,6 +59,12 @@ async function compiler() {
   }
 }
 
+const versions = [
+  ['short', 'alexandre-teixeira-cv.pdf'],
+  ['two-page', 'alexandre-teixeira-two-page-cv.pdf'],
+  ['extended', 'alexandre-teixeira-extended-cv.pdf'],
+]
+
 async function build() {
   // Catch invalid content before compiling or replacing either download.
   const content = JSON.parse(await readFile(path.join(root, 'src/content.json'), 'utf8'))
@@ -71,17 +77,17 @@ async function build() {
   const packageCache = path.join(root, '.cache/typst/packages')
   await mkdir(packageCache, { recursive: true })
   try {
-    for (const [mode, filename] of [['short', 'alexandre-teixeira-cv.pdf'], ['extended', 'alexandre-teixeira-extended-cv.pdf']]) {
+    for (const [mode, filename] of versions) {
       run(typst, [
         'compile', '--pdf-standard', '1.4', '--root', root, '--package-cache-path', packageCache,
         '--input', `version=${mode}`, 'cv/resume.typ', path.join(staging, filename),
       ])
     }
     await mkdir(output, { recursive: true })
-    for (const filename of ['alexandre-teixeira-cv.pdf', 'alexandre-teixeira-extended-cv.pdf']) {
+    for (const [, filename] of versions) {
       await copyFile(path.join(staging, filename), path.join(output, filename))
     }
-    console.log('Generated CV and Extended CV in src/generated/cv/.')
+    console.log('Generated CV, Two-page CV and Extended CV in src/generated/cv/.')
   } finally {
     await rm(staging, { recursive: true, force: true })
   }

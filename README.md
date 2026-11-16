@@ -96,12 +96,15 @@ GitHub too, commit it to `levels/images/` in the repo with the same name.
 
 ## CV downloads
 
-The CV tab has **Download CV** and **Download Extended CV** links. Both PDFs
+The CV tab has **Download CV**, **Download 2-page CV** and **Download Extended CV**
+links. All three PDFs
 are generated from `src/content.json` using `cv/resume.typ`, adapted from the
 original `@preview/clickworthy-resume:1.0.1` template. The concise CV keeps
 the original selection; the extended version includes all entries, full
-descriptions, skills, repository links, and walkthrough links. Screenshot
-galleries remain on the website.
+descriptions, skills, repository links, and walkthrough links. A third
+two-page CV adds every university project (full bullet points) to the concise
+selection.
+Screenshot galleries remain on the website.
 
 `npm run build` regenerates both PDFs before building the site, so the existing
 `npm run deploy` publishes matching website and PDF content. `npm run dev`
@@ -112,7 +115,8 @@ session, regenerate PDFs with:
 npm run build:cv
 ```
 
-Outputs are `src/generated/cv/alexandre-teixeira-cv.pdf` and
+Outputs are `src/generated/cv/alexandre-teixeira-cv.pdf`,
+`src/generated/cv/alexandre-teixeira-two-page-cv.pdf` and
 `src/generated/cv/alexandre-teixeira-extended-cv.pdf`. Vite imports them as
 assets and emits them with content hashes under `dist/assets/`, so downloads
 use the matching PDF rather than a stale public URL. The download handler

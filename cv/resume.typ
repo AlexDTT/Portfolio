@@ -1,15 +1,19 @@
 #import "@preview/clickworthy-resume:1.0.1": *
 
-// One content source and one layout, compiled as short and extended PDFs.
+// One content source and one layout, compiled as short, two-page and extended PDFs.
+// "two-page" is the short CV plus every university project.
 #let data = json("../src/content.json")
-#let extended = sys.inputs.at("version", default: "short") == "extended"
+#let version = sys.inputs.at("version", default: "short")
+#let extended = version == "extended"
+#let two-page = version == "two-page"
 #let selected(entries) = entries.filter(entry =>
   extended or entry.at("cv", default: (:)).at("includeInShort", default: false)
 )
 #let bullets(points) = if points.len() > 0 { list(..points) }
 #let short-points(entry, fallback) = entry.at("cv", default: (:)).at("shortPoints", default: fallback)
 #let linked-title(entry) = {
-  let url = entry.at("repo", default: entry.at("link", default: none))
+  let url = entry.at("repo", default: none)
+  if url == none { url = entry.at("link", default: none) }
   if url != none { link(url, entry.title) } else { entry.title }
 }
 
@@ -18,8 +22,10 @@
   author: data.profile.name,
   contacts: (
     link("mailto:" + data.profile.email, data.profile.email),
+    link(data.profile.website, data.profile.website.replace("https://", "")),
     link(data.profile.github, data.profile.github.replace("https://", "")),
-    link(data.profile.linkedin, data.profile.linkedin.replace("https://", "")),
+    // The full LinkedIn URL is too long to keep the contact line on one line.
+    link(data.profile.linkedin, "LinkedIn"),
   ),
   theme-color: rgb("#26428b"),
   font: "New Computer Modern",
@@ -28,7 +34,7 @@
   margin: (top: 1cm, bottom: 1cm, left: 1cm, right: 1cm),
 )
 
-#set document(title: data.profile.name + if extended { " - Extended CV" } else { " - CV" })
+#set document(title: data.profile.name + if extended { " - Extended CV" } else if two-page { " - Two-page CV" } else { " - CV" })
 #set par(leading: 0.5em)
 
 = Education
@@ -78,7 +84,7 @@
   ))
 }
 
-#let coursework = selected(data.universityProjects)
+#let coursework = if two-page { data.universityProjects } else { selected(data.universityProjects) }
 #if coursework.len() > 0 [
   = University Projects
   #for entry in coursework {
@@ -87,7 +93,7 @@
       organization: entry.team + " · " + entry.course,
       date: entry.period,
       details: [
-        #bullets(if extended { entry.points } else { short-points(entry, entry.points) })
+        #bullets(if extended or two-page { entry.points } else { short-points(entry, entry.points) })
         #if extended {
           for paragraph in entry.at("detail", default: ()) { par(paragraph) }
         }
@@ -107,7 +113,7 @@
       title: if extended { link(entry.url, entry.title) } else { [#link(entry.url, entry.title) (#entry.category)] },
       organization: if extended { entry.category } else { "" },
       date: entry.period,
-      details: bullets(if extended { entry.points } else { short-points(entry, entry.points) }),
+      details: bullets(if extended or two-page { entry.points } else { short-points(entry, entry.points) }),
     ))
   }
 ]

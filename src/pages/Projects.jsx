@@ -58,8 +58,8 @@ export default function Projects() {
               detail={p.detail}
               video={p.video}
               galleries={p.galleries}
-              href={p.repo}
-              hrefLabel="open repository"
+              href={p.repo || p.link}
+              hrefLabel={p.repo ? 'open repository' : p.linkLabel || 'open project'}
               meta={metaFor(p)}
               {...openProps(p.id)}
             />

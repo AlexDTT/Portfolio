@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import EntryLogo from '../components/EntryLogo.jsx'
 import cvUrl from '../generated/cv/alexandre-teixeira-cv.pdf?url'
+import twoPageCvUrl from '../generated/cv/alexandre-teixeira-two-page-cv.pdf?url'
 import extendedCvUrl from '../generated/cv/alexandre-teixeira-extended-cv.pdf?url'
 import { profile, projects, experience, universityProjects, writeups, education, skills } from '../data.js'
 import './CV.css'
@@ -396,6 +397,15 @@ export default function CV() {
           </a>
           <a
             className="bracket"
+            href={twoPageCvUrl}
+            download="Alexandre-Teixeira-Two-Page-CV.pdf"
+            onClick={(event) => downloadPdf(event, twoPageCvUrl, 'Alexandre-Teixeira-Two-Page-CV.pdf')}
+            aria-disabled={Boolean(downloading)}
+          >
+            Download 2-page CV <span className="cv-page__download-format">PDF</span>
+          </a>
+          <a
+            className="bracket"
             href={extendedCvUrl}
             download="Alexandre-Teixeira-Extended-CV.pdf"
             onClick={(event) => downloadPdf(event, extendedCvUrl, 'Alexandre-Teixeira-Extended-CV.pdf')}
@@ -450,8 +460,8 @@ export default function CV() {
             detail={p.detail}
             video={p.video}
             galleries={p.galleries}
-            href={p.repo}
-            hrefLabel="open repository"
+            href={p.repo || p.link}
+            hrefLabel={p.repo ? 'open repository' : p.linkLabel || 'open project'}
             meta={
               p.repo
                 ? `${p.team} · ${p.course} · ${repoPath(p.repo)}`
