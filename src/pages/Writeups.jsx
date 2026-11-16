@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { writeups } from '../data.js'
+import { levelLabel, writeups } from '../data.js'
 import './Writeups.css'
 
 export default function Writeups() {
@@ -20,7 +20,7 @@ export default function Writeups() {
                 <span className="writeups-series__period mono">{series.period}</span>
               </span>
               <span className="writeups-series__category mono">
-                {series.category} · {series.levels.length} levels
+                {series.category} · {levelLabel(series)}
               </span>
               <span className="writeups-series__summary">{series.summary}</span>
             </Link>

@@ -3,7 +3,7 @@ import './ProjectRow.css'
 
 export default function ProjectRow({ project, open, onToggle }) {
   return (
-    <div className="project-row" data-open={open}>
+    <div className="project-row" id={project.id} data-open={open}>
       <button
         className="project-row__trigger"
         onClick={onToggle}

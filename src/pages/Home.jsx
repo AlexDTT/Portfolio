@@ -10,10 +10,7 @@ export default function Home() {
     <>
       <section className="home-hero">
         <h1 className="home-hero__title">{profile.name}</h1>
-        <p className="home-hero__intro">
-          I'm a developer leaning into cybersecurity. I build full-stack products,
-          then try to find where they'd break.
-        </p>
+        <p className="home-hero__intro">{profile.tagline}</p>
       </section>
 
       {qa.map((item) => (
@@ -42,7 +39,7 @@ export default function Home() {
         <ul className="home-featured">
           {featured.map((p) => (
             <li key={p.id}>
-              <Link className="home-featured__link" to="/projects">
+              <Link className="home-featured__link" to={`/projects#${p.id}`}>
                 <EntryLogo src={p.logo} alt={`${p.title} logo`} />
                 <span className="home-featured__title">{p.title}</span>
                 <span className="home-featured__summary">{p.summary}</span>

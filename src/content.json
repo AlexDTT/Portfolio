@@ -3,6 +3,7 @@
     "name": "Alexandre Teixeira",
     "role": "Software Engineer",
     "focus": "Cybersecurity",
+    "tagline": "I'm a developer leaning into cybersecurity. I build full-stack products, then try to find where they'd break.",
     "location": "Porto, Portugal",
     "email": "alex.dinis.06@gmail.com",
     "github": "https://github.com/AlexDTT",
@@ -507,7 +508,8 @@
         "levels/natas16.md",
         "levels/natas17.md",
         "levels/natas18.md"
-      ]
+      ],
+      "inProgress": ["levels/natas18.md"]
     }
   ],
   "skills": [

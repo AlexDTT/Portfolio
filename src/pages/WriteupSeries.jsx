@@ -1,9 +1,9 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
 import { Lightbox } from './CV.jsx'
-import { writeups } from '../data.js'
+import { levelLabel, writeups } from '../data.js'
 import './Writeups.css'
 
 const documents = import.meta.glob('/src/writeups/**/*.md', {
@@ -59,7 +59,7 @@ function Level({ series, file }) {
   }
 
   return (
-    <article className="writeup">
+    <article className="writeup" id={levelId(file)}>
       <div className="writeup__body">
         <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
           {documents[documentPath]}
@@ -69,9 +69,43 @@ function Level({ series, file }) {
   )
 }
 
+// "levels/natas04.md" -> "natas04", used as the level's anchor.
+const levelId = (file) => file.split('/').pop().replace(/\.md$/, '')
+
+// The level's own "# Title" line, without the "(in progress)" note.
+const levelTitle = (markdown = '', file) =>
+  (markdown.match(/^#\s+(.+)$/m)?.[1] ?? levelId(file)).replace(/\s*\(in progress\)\s*$/i, '')
+
+function Contents({ series }) {
+  const pending = series.inProgress ?? []
+  return (
+    <nav className="writeup-toc" aria-label="Levels">
+      <h2 className="section-heading">Contents</h2>
+      <ol className="writeup-toc__list">
+        {series.levels.map((file) => (
+          <li key={file}>
+            <Link className="writeup-toc__link" to={`#${levelId(file)}`}>
+              {levelTitle(documents[`/src/writeups/${series.id}/${file}`], file)}
+            </Link>
+            {pending.includes(file) && <span className="writeup-toc__note mono">in progress</span>}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
+
 export default function WriteupSeries() {
   const { seriesId } = useParams()
+  const { hash } = useLocation()
   const series = writeups.find((entry) => entry.id === seriesId)
+
+  // This page loads lazily, after Layout has already looked for the #hash
+  // target, so jump to it here on first render (e.g. a shared level link).
+  useEffect(() => {
+    if (hash) document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'instant', block: 'start' })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (!series) return <Navigate to="/writeups" replace />
 
@@ -86,7 +120,7 @@ export default function WriteupSeries() {
         <span className="writeups-series__period mono">{series.period}</span>
       </div>
       <p className="writeups-series__category mono">
-        {series.category} · {series.levels.length} levels
+        {series.category} · {levelLabel(series)}
       </p>
       <p className="writeups-series__summary">{series.summary}</p>
       <a
@@ -97,6 +131,8 @@ export default function WriteupSeries() {
       >
         open repository
       </a>
+
+      <Contents series={series} />
 
       {series.levels.map((file) => (
         <Level key={file} series={series} file={file} />

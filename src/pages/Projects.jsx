@@ -1,11 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import ProjectRow from '../components/ProjectRow.jsx'
 import { Item, repoPath } from './CV.jsx'
 import { projects, universityProjects } from '../data.js'
 import './Projects.css'
 
 export default function Projects() {
-  const [openId, setOpenId] = useState(null)
+  const { hash } = useLocation()
+  const [openId, setOpenId] = useState(hash ? hash.slice(1) : null)
+
+  // Links like /projects#ninjix (from the home page) open that project.
+  useEffect(() => {
+    if (hash) setOpenId(hash.slice(1))
+  }, [hash])
 
   const openProps = (id) => ({
     open: openId === id,

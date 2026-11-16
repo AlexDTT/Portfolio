@@ -215,3 +215,36 @@
     gap: 4px;
   }
 }
+
+.writeup-toc {
+  margin-top: 36px;
+}
+
+.writeup-toc__list {
+  margin-top: 14px;
+  padding-left: 0;
+  list-style: none;
+  columns: 2 220px;
+  column-gap: 32px;
+  font-size: 0.9rem;
+}
+
+.writeup-toc__list li {
+  break-inside: avoid;
+  padding: 3px 0;
+}
+
+.writeup-toc__link {
+  color: var(--ink-soft);
+  transition: color 0.15s ease;
+}
+
+.writeup-toc__link:hover {
+  color: var(--accent);
+}
+
+.writeup-toc__note {
+  margin-left: 8px;
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+}
